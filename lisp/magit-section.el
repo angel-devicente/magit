@@ -405,7 +405,7 @@ The return value has the form ((TYPE . VALUE)...)."
                 (cond ((eieio-object-p value)
                        (magit-section-ident-value value))
                       ((not (memq type '(unpulled unpushed))) value)
-                      ((string-match-p "@{upstream}" value) value)
+                      ((string-search "@{upstream}" value) value)
                       ;; Unfortunately Git chokes on "@{push}" when
                       ;; the value of `push.default' does not allow a
                       ;; 1:1 mapping.  Arbitrary commands may consult

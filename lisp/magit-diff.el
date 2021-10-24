@@ -1690,8 +1690,8 @@ the Magit-Status buffer for DIRECTORY."
                (offset 0))
            (goto-char content)
            (while (< (point) target)
-             (unless (string-match-p
-                      (if goto-from "\\+" "-")
+             (unless (string-search
+                      (if goto-from "+" "-")
                       (buffer-substring (point) (+ (point) prefix)))
                (cl-incf offset))
              (forward-line))
@@ -2337,7 +2337,7 @@ section or a child thereof."
                           'font-lock-face 'magit-diff-file-heading)
               " ("
               (cond (rewind "rewind")
-                    ((string-match-p "\\.\\.\\." range) "non-ff")
+                    ((string-search "..." range) "non-ff")
                     (t "new commits"))
               (and (or modified untracked)
                    (concat ", "
